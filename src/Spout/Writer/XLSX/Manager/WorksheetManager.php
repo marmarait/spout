@@ -215,7 +215,7 @@ EOD;
         if ($cell->isString()) {
             $value = $cell->getValue();
             if(substr($value,0,1)==='='){
-                $cellXML .= '><f>'.substr($cell->getValue(), 1).'</f><v></v>';
+                $cellXML .= '><f>'.substr($cell->getValue(), 1).'</f><v></v></c>';
             }else{
                 $cellXML .= $this->getCellXMLFragmentForNonEmptyString($cell->getValue());
             }
