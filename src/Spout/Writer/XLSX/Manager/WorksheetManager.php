@@ -213,7 +213,12 @@ EOD;
         $cellXML .= ' s="' . $styleId . '"';
 
         if ($cell->isString()) {
-            $cellXML .= $this->getCellXMLFragmentForNonEmptyString($cell->getValue());
+            $value = $cell->getValue();
+            if(substr($value,0,1)==='='){
+                $cellXML .= '><f>'.substr($cell->getValue(), 1).'</f><v></v>';
+            }else{
+                $cellXML .= $this->getCellXMLFragmentForNonEmptyString($cell->getValue());
+            }
         } elseif ($cell->isBoolean()) {
             $cellXML .= ' t="b"><v>' . (int) ($cell->getValue()) . '</v></c>';
         } elseif ($cell->isNumeric()) {
